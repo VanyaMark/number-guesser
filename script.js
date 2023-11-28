@@ -12,23 +12,34 @@ const getAbsoluteDistance = (num1, num2) => {
   return Math.abs(num1 - num2);
 };
 
-const compareGuesses = (humanGuess, computerGuess, targetToGuess) => {
-  if (
-    getAbsoluteDistance(targetToGuess, humanGuess) ===
-    getAbsoluteDistance(targetToGuess, computerGuess)
-  ) {
-    return true;
-  } else if (
-    getAbsoluteDistance(targetToGuess, humanGuess) <
-    getAbsoluteDistance(targetToGuess, computerGuess)
-  ) {
-    return true;
-  } else if (
-    getAbsoluteDistance(targetToGuess, humanGuess) >
-    getAbsoluteDistance(targetToGuess, computerGuess)
-  ) {
+const checkHumanGuess = (humanGuess) => {
+  if (humanGuess < 0 || humanGuess > 9) {
+    alert("Please enter a number between 0 and 9.");
     return false;
+  } else {
+    return true;
   }
+};
+
+const compareGuesses = (humanGuess, computerGuess, targetToGuess) => {
+  if (checkHumanGuess(humanGuess) === true) {
+    if (
+      getAbsoluteDistance(targetToGuess, humanGuess) ===
+      getAbsoluteDistance(targetToGuess, computerGuess)
+    ) {
+      return true;
+    } else if (
+      getAbsoluteDistance(targetToGuess, humanGuess) <
+      getAbsoluteDistance(targetToGuess, computerGuess)
+    ) {
+      return true;
+    } else if (
+      getAbsoluteDistance(targetToGuess, humanGuess) >
+      getAbsoluteDistance(targetToGuess, computerGuess)
+    ) {
+      return false;
+    }
+  } 
 };
 
 const updateScore = (winner) => {
