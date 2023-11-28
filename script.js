@@ -8,33 +8,37 @@ const generateTarget = () => {
   return Math.floor(Math.random() * 10);
 };
 
+const getAbsoluteDistance = (num1, num2) => {
+  return Math.abs(num1 - num2);
+};
+
 const compareGuesses = (humanGuess, computerGuess, targetToGuess) => {
   if (
-    Math.abs(targetToGuess - humanGuess) ===
-    Math.abs(targetToGuess - computerGuess)
+    getAbsoluteDistance(targetToGuess, humanGuess) ===
+    getAbsoluteDistance(targetToGuess, computerGuess)
   ) {
     return true;
   } else if (
-    Math.abs(targetToGuess - humanGuess) <
-    Math.abs(targetToGuess - computerGuess)
+    getAbsoluteDistance(targetToGuess, humanGuess) <
+    getAbsoluteDistance(targetToGuess, computerGuess)
   ) {
     return true;
   } else if (
-    Math.abs(targetToGuess - humanGuess) >
-    Math.abs(targetToGuess - computerGuess)
+    getAbsoluteDistance(targetToGuess, humanGuess) >
+    getAbsoluteDistance(targetToGuess, computerGuess)
   ) {
     return false;
   }
 };
 
-const updateScore = winner => {
-    if (winner === 'human') {
-        humanScore +=1;
-    } else if (winner === 'computer') {
-        computerScore +=1;
-    }
-}
+const updateScore = (winner) => {
+  if (winner === "human") {
+    humanScore += 1;
+  } else if (winner === "computer") {
+    computerScore += 1;
+  }
+};
 
 const advanceRound = () => {
-    currentRoundNumber += 1;
-}
+  return (currentRoundNumber += 1);
+};
